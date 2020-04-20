@@ -1,4 +1,4 @@
-package pinboard.webclient
+package pinboard
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.commons.logging.LogFactory
@@ -10,13 +10,12 @@ import org.springframework.util.MimeType
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.bodyToFlux
 import org.springframework.web.reactive.function.client.bodyToMono
-import pinboard.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import java.util.*
 
 
-open class WebClientPinboardClient(private val token: String) {
+open class PinboardClient(private val token: String) {
 
 	private val jacksonCodecCustomizer = CodecCustomizer {
 		val objectMapper = ObjectMapper()

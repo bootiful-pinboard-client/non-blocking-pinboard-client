@@ -3,16 +3,17 @@ package pinboard.webclient
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import pinboard.Bookmark
+import pinboard.PinboardClient
 import reactor.kotlin.extra.math.min
 import reactor.test.StepVerifier
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.*
 
-class WebClientPinboardClientTest {
+class PinboardClientTest {
 
 	private val token = System.getenv("PINBOARD_TOKEN")
-	private val reactivePinboardClient = WebClientPinboardClient(this.token)
+	private val reactivePinboardClient = PinboardClient(this.token)
 	private val testTag = "pbctest"
 	private val testTag2 = "pbctest2"
 	private val bookmark = Bookmark("http://garfield.com", "description", "extended", "hash", "meta", Date(), true, true, arrayOf(this.testTag, this.testTag2))
