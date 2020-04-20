@@ -1,4 +1,4 @@
-# A Simple Pinboard Client
+# A Reactive Pinboard Client
 
 ![CI](https://github.com/bootiful-pinboard-client/non-blocking-pinboard-client/workflows/CI/badge.svg)
 
