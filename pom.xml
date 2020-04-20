@@ -4,15 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.joshlong</groupId>
-    <artifactId>pinboard-client</artifactId>
+    <groupId>com.joshlong.pinboard</groupId>
+    <artifactId>non-blocking-client</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <description>
-        Provides a RestTemplate-flavored and a WebClient-flavored Pinboard
-        client
-        that activate based on the kind of web application being run.
+        Provides a WebClient-flavored Pinboard client
     </description>
 
     <parent>
@@ -33,8 +31,9 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.joshlong.pinboard</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>

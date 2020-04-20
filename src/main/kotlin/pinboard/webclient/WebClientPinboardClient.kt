@@ -35,7 +35,7 @@ open class WebClientPinboardClient(private val token: String) {
 
 	private val pinboardApiEndpoint = "https://api.pinboard.in/v1"
 
-	open fun updatePost(post: Bookmark) =
+	open fun updatePost(post: Bookmark ) =
 			updatePost(
 					url = post.href!!,
 					description = post.description!!,
