@@ -68,7 +68,7 @@ class WebClientPinboardClientTest {
 	@Test
 	fun get10Records() {
 		val maxResults = 10
-		val postsByTag = this.reactivePinboardClient.getAllPosts(this.pinboardClientTestTags, 0, maxResults).take(12)
+		val postsByTag = this.reactivePinboardClient.getAllPosts(arrayOf("twis"), 0, maxResults).take(12)
 		StepVerifier
 				.create(postsByTag)
 				.expectNextCount(10)
@@ -89,14 +89,16 @@ class WebClientPinboardClientTest {
 
 	@Test
 	fun deletePost() {
+		setupNewPost()
 		StepVerifier
 				.create(this.reactivePinboardClient.getAllPosts(bookmark.tags))
 				.expectNextCount(1)
 				.verifyComplete()
-		this.reactivePinboardClient.deletePost(bookmark.href!!)
-
 		StepVerifier
-				.create(this.reactivePinboardClient.getAllPosts(bookmark.tags))
+				.create(
+						this.reactivePinboardClient.deletePost(bookmark.href!!)
+								.thenMany(this.reactivePinboardClient.getAllPosts(bookmark.tags))
+				)
 				.expectNextCount(0)
 				.verifyComplete()
 	}
