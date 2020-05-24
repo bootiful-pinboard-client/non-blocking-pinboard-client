@@ -18,7 +18,7 @@ class PinboardClientTest {
   private val testTag = "pbctest"
   private val testTag2 = "pbctest2"
   private val bookmark = Bookmark("http://garfield.com", "description",
-      "extended", "hash", "meta", Date(), true, true, arrayOf(this.testTag, this.testTag2))
+      "extended", "hash", "meta", Date(), false, true, arrayOf(this.testTag, this.testTag2))
 
   private val pinboardClientTestTags: Array<String> by lazy {
     bookmark.tags
