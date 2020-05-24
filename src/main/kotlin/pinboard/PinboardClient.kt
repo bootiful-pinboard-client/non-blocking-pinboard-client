@@ -82,13 +82,14 @@ open class PinboardClient(private val token: String) {
 		return spec.exchange().flatMap {
 			val ok = it.statusCode().is2xxSuccessful
 			it.bodyToMono<Map<String, String>>().map {
-				val done = it.contains("done")
+				val done = it.containsValue("done")
 				done && ok
 			}
 		}
 	}
 
 	open fun deletePost(url: String): Mono<Boolean> {
+		log.debug("deleting Pinboard URL $url")
 		val params = ParamUtils.exchangeParameters(token, "url" to url)
 		return isDone(this.client.get().uri(buildUrl("/posts/delete", params), params))
 	}

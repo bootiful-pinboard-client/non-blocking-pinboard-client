@@ -97,7 +97,8 @@ class PinboardClientTest {
 				.verifyComplete()
 		StepVerifier
 				.create(
-						this.reactivePinboardClient.deletePost(bookmark.href!!)
+						this.reactivePinboardClient
+								.deletePost(bookmark.href!!)
 								.thenMany(this.reactivePinboardClient.getAllPosts(bookmark.tags))
 				)
 				.expectNextCount(0)
