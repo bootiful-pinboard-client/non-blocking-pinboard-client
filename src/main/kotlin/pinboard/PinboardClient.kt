@@ -83,8 +83,14 @@ open class PinboardClient(private val token: String) {
         .exchange()
         .flatMap {
           val ok = it.statusCode().is2xxSuccessful
-          it.bodyToMono<Map<String, String>>().map {
-            val done = it.containsValue("done")
+          it.bodyToMono<Map<String, String>>().map { mapOfResponse ->
+            val done = mapOfResponse.containsValue("done") ||
+                mapOfResponse.containsValue("item not found")
+            if (log.isDebugEnabled) {
+              log.debug(it)
+              log.debug("done? $done")
+              log.debug("ok? $ok")
+            }
             done && ok
           }
         }
